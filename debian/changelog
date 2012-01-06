@@ -1,0 +1,7 @@
+sqlite3 (3.7.9-slp1) unstable; urgency=low
+
+  * Initial Release
+  * Git : unmodified/sqlite3
+  * Tag : sqlite3_3.7.9-slp1
+
+ -- Hyungdeuk Kim <hd3.kim@samsung.com>  Wed, 7 Dec 2011 20:00:40 +0900

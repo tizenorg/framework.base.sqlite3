@@ -1,0 +1,3 @@
+@PREFIX@/include/*.h
+@PREFIX@/lib/libsqlite3.la
+@PREFIX@/lib/pkgconfig/sqlite3.pc
