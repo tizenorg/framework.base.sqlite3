@@ -56,7 +56,7 @@ AC_ARG_ENABLE(threadsafe, [AS_HELP_STRING(
   [], [enable_threadsafe=yes])
 THREADSAFE_FLAGS=-DSQLITE_THREADSAFE=0
 if test x"$enable_threadsafe" != "xno"; then
-  THREADSAFE_FLAGS="-D_REENTRANT=1 -DSQLITE_THREADSAFE=2"
+  THREADSAFE_FLAGS="-D_REENTRANT=1 -DSQLITE_THREADSAFE=1"
   AC_SEARCH_LIBS(pthread_create, pthread)
 fi
 AC_SUBST(THREADSAFE_FLAGS)
