@@ -26,6 +26,8 @@ else
 	CFLAGS += -O2
 endif
 
+#CFLAGS += -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_MEMORY_MANAGEMENT
+
 configure: configure.ac
 	./autogen.sh
 

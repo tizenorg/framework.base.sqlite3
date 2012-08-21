@@ -1,11 +1,11 @@
-Name:       sqlite3
+Name:       sqlite
 Summary:    Library that implements an embeddable SQL database engine
 Version:    3.7.9
-%define tar_ver 3070900
-Release:    1
+Release:    3
 Group:      Applications/Databases
 License:    Public Domain
 URL:        http://www.sqlite.org/download.html
+#%define tar_ver 3070900
 #Source:    http://www.sqlite.org/sqlite-autoconf-%{tar_ver}.tar.gz
 Source:     %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
@@ -38,7 +38,7 @@ to install %{name}-devel.
 %build
 
 %reconfigure --prefix=%{_prefix} \
-	CFLAGS="$RPM_OPT_FLAGS -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_MEMORY_MANAGEMENT" \
+	CFLAGS="$RPM_OPT_FLAGS " \
 	--enable-shared=yes \
 	--enable-static=no \
 	--enable-threadsafe
