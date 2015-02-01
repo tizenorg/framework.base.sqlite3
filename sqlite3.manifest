@@ -3,6 +3,6 @@
 		<domain name="_"/>
 	</request>
 	<assign>
-                <filesystem path="/usr/bin/sqlite3" exec_label="none" />
+		<filesystem path="/usr/bin/sqlite3" exec_label="none" />
 	</assign>
 </manifest>

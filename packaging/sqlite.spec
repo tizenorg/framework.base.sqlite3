@@ -1,7 +1,7 @@
 Name:       sqlite
 Summary:    Library that implements an embeddable SQL database engine
 Version:    3.7.13
-Release:    2
+Release:    4
 Group:      Applications/Databases
 License:    Public Domain
 URL:        http://www.sqlite.org/download.html
@@ -59,9 +59,8 @@ rm -rf $RPM_BUILD_ROOT/usr/share/man
 %manifest sqlite3.manifest
 %{_bindir}/*
 %{_libdir}/*.so.*
+%{_libdir}/*.so
 
 %files devel
 %{_includedir}/*.h
-%{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-
