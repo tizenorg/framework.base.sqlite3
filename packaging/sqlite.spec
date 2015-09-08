@@ -1,11 +1,11 @@
 Name:       sqlite
 Summary:    Library that implements an embeddable SQL database engine
-Version:    3.7.9
-Release:    3
+Version:    3.7.13
+Release:    4
 Group:      Applications/Databases
-License:    Public Domain
+License:    PD
 URL:        http://www.sqlite.org/download.html
-#%define tar_ver 3070900
+#%define tar_ver 3071300
 #Source:    http://www.sqlite.org/sqlite-autoconf-%{tar_ver}.tar.gz
 Source:     %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
@@ -56,10 +56,11 @@ rm -rf $RPM_BUILD_ROOT/usr/share/man
 %postun -p /sbin/ldconfig
 
 %files
+%manifest sqlite3.manifest
 %{_bindir}/*
 %{_libdir}/*.so.*
+%{_libdir}/*.so
 
 %files devel
 %{_includedir}/*.h
-%{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
