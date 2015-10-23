@@ -1,0 +1,16 @@
+diff -ru sqlite3/sqlite3.c sqlite3_patch/sqlite3.c
+--- sqlite3/sqlite3.c	2015-06-26 10:35:20.059454939 +0900
++++ sqlite3_patch/sqlite3.c	2015-06-26 10:54:52.047454799 +0900
+@@ -46433,6 +46433,12 @@
+   }else if( memDb ){
+     pPager->journalMode = PAGER_JOURNALMODE_MEMORY;
+   }
++#ifdef SQLITE_TIZEN_FEATURE
++  else {
++      pPager->journalMode = PAGER_JOURNALMODE_PERSIST;
++  }
++#endif
++
+   /* pPager->xBusyHandler = 0; */
+   /* pPager->pBusyHandlerArg = 0; */
+   pPager->xReiniter = xReinit;

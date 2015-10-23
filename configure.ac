@@ -8,7 +8,7 @@
 #
 
 AC_PREREQ(2.61)
-AC_INIT(sqlite, 3.7.9, http://www.sqlite.org)
+AC_INIT(sqlite, 3.8.10.2, http://www.sqlite.org)
 AC_CONFIG_SRCDIR([sqlite3.c])
 
 # Use automake.
@@ -77,6 +77,21 @@ AC_MSG_CHECKING([for whether to support dynamic extensions])
 AC_MSG_RESULT($enable_dynamic_extensions)
 AC_SUBST(DYNAMIC_EXTENSION_FLAGS)
 #-----------------------------------------------------------------------
+
+#-----------------------------------------------------------------------
+#   --enable-icu
+#
+AC_ARG_ENABLE(icu, [AS_HELP_STRING(
+  [--enable-icu], [use International Components for Unicode [default=no]])],
+  [], [enable_icu=no])
+if test x"$enable_icu" != "xno" ; then
+  AC_SEARCH_LIBS(ucol_strcoll, icui18n)
+  AC_SEARCH_LIBS(u_strToUTF8, icuuc)
+  ENABLE_ICU_FLAGS="-DSQLITE_ENABLE_ICU"
+fi
+AC_SUBST(ENABLE_ICU_FLAGS)
+#-----------------------------------------------------------------------
+
 
 AC_CHECK_FUNCS(posix_fallocate)
 

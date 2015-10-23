@@ -1,7 +1,7 @@
 Name:       sqlite
 Summary:    Library that implements an embeddable SQL database engine
-Version:    3.7.13
-Release:    4
+Version:    3.8.10.2
+Release:    5
 Group:      Applications/Databases
 License:    PD
 URL:        http://www.sqlite.org/download.html
@@ -10,6 +10,7 @@ URL:        http://www.sqlite.org/download.html
 Source:     %{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
+Patch1:     sqlite_default_journalmode.patch
 
 %description
 SQLite is a C library that implements an SQL database engine. A large
@@ -19,6 +20,7 @@ Applications that link against SQLite can enjoy the power and
 flexibility of an SQL database without the administrative hassles of
 supporting a separate database server.  Version 2 and version 3 binaries
 are named to permit each to be installed on a single host
+SQLite Encryption Extension supported.
 
 %package devel
 Summary:    Development tools for the sqlite3 embeddable SQL database engine
@@ -32,16 +34,17 @@ to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}-%{version}
-
-#%patch0 -p1
+%patch1 -p1 -b .journal_mode
 
 %build
 
 %reconfigure --prefix=%{_prefix} \
 	CFLAGS="$RPM_OPT_FLAGS " \
+    --disable-dependency-tracking \
 	--enable-shared=yes \
 	--enable-static=no \
-	--enable-threadsafe
+	--enable-threadsafe \
+	--enable-icu=no
 
 make %{?jobs:-j%jobs}
 
